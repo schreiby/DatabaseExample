@@ -31,7 +31,7 @@ public class MainActivity extends ActionBarActivity {
         dbAdapter.insert(john);
         dbAdapter.close();*/
 
-        //retrieve all records
+    /*    //retrieve all records
         dbAdapter.open();
         Cursor cursor = dbAdapter.getAll();
         if (cursor.getCount() > 0) {
@@ -48,8 +48,22 @@ public class MainActivity extends ActionBarActivity {
                 Toast.makeText(this, employee.toString(), Toast.LENGTH_SHORT).show();
                 } while (cursor.moveToNext());
             }
+        dbAdapter.close(); */
+
+        //retrieving a single record
+        dbAdapter.open();
+        Cursor cursor = dbAdapter.getEmployeeById(1);
+
+        if (cursor.getCount() > 0) {
+            int id = cursor.getInt(cursor.getColumnIndex(DBAdapter.C_ID));
+            String name = cursor.getString(cursor.getColumnIndex(DBAdapter.C_NAME));
+            String email = cursor.getString(cursor.getColumnIndex(DBAdapter.C_EMAIL));
+            Employee employee = new Employee(id, name, email);
+            Toast.makeText(this, employee.toString(), Toast.LENGTH_SHORT).show();
+        }
+        cursor.close();
         dbAdapter.close();
         }
     }
 
-   
+
