@@ -50,7 +50,7 @@ public class MainActivity extends ActionBarActivity {
             }
         dbAdapter.close(); */
 
-        //retrieving a single record
+    /*    //retrieving a single record
         dbAdapter.open();
         Cursor cursor = dbAdapter.getEmployeeById(1);
 
@@ -62,6 +62,14 @@ public class MainActivity extends ActionBarActivity {
             Toast.makeText(this, employee.toString(), Toast.LENGTH_SHORT).show();
         }
         cursor.close();
+        dbAdapter.close();*/
+
+        //updating a record
+        dbAdapter.open();
+        Employee joe = new Employee("Joe Mile", "joe99@example.com");
+        if(dbAdapter.update(1, joe)> 0) {
+            Toast.makeText(this, "Record updated successfully", Toast.LENGTH_SHORT).show();
+        }
         dbAdapter.close();
         }
     }
