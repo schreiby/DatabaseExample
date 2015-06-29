@@ -64,11 +64,18 @@ public class MainActivity extends ActionBarActivity {
         cursor.close();
         dbAdapter.close();*/
 
-        //updating a record
+    /*    //updating a record
         dbAdapter.open();
         Employee joe = new Employee("Joe Mile", "joe99@example.com");
         if(dbAdapter.update(1, joe)> 0) {
             Toast.makeText(this, "Record updated successfully", Toast.LENGTH_SHORT).show();
+        }
+        dbAdapter.close();*/
+
+        //deleting a record
+        dbAdapter.open();
+        if(dbAdapter.delete(2) > 0) {
+            Toast.makeText(this, "Record deleted successfully!", Toast.LENGTH_SHORT).show();
         }
         dbAdapter.close();
         }
